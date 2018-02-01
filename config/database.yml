@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: postgres
+  user: postgres
+
+development:
+  <<: *default
+  database: manager_customer_moip_development
+
+test:
+  <<: *default
+  database: manager_customer_moip_test
+
+production:
+  <<: *default
+  database: manager_customer_moip_production
