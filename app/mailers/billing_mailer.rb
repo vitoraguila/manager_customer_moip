@@ -1,0 +1,2 @@
+class BillingMailer < ApplicationMailer
+end
