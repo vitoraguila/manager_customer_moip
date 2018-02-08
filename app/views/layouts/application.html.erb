@@ -14,6 +14,8 @@
     <header>
       <%= render "shared/navbar" %>
     </header>
+    
+    <br><br>
 
     <main>
       <div class="container">
@@ -24,6 +26,19 @@
     <footer>
       <%= render "shared/footer" %>
     </footer>
+
+    <% if notice %>
+        <script>
+            Materialize.toast('<%= notice %>', 4000, 'green')
+        </script>
+    <% end %>
+
+    <% if alert %>
+        <script>
+            Materialize.toast('<%= alert %>', 4000, 'red')
+        </script>
+    <% end %>
+    
 
   </body>
 </html>

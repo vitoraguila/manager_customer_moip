@@ -1,0 +1,52 @@
+<% if @customer.errors.any? %> 
+  <% @customer.errors.full_messages.each do |message| %>
+    <script>Materialize.toast('<%= message %>', 4000, 'red')</script>
+  <% end %>
+<% end %>
+
+<div class="row">
+    <%= form_for(@customer, html: { class: "col s12" }) do |f| %>
+       <div class="row">
+        <div class="input-field col s12">
+          <%= f.text_field :fullname, class: "validate", placeholder: "Nome/Razao Social" %>
+          <label for="first_name">Nome/Razao Social:</label>
+        </div>
+      </div>    
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.text_field :email, class: "validate", placeholder: "E-mail" %>
+          <label for="first_name">Email:</label>
+        </div>
+      </div>    
+      <div class="row">
+        <div class="input-field col s6">
+          <%= f.text_field :cpfcnpj, class: "validate", placeholder: "CPF/CNPJ" %>        
+          <label for="first_name">CPF/CNPJ</label>
+        </div>
+        <div class="input-field col s6">
+          <%= f.text_field :phone, class: "validate", placeholder: "Telefone" %>
+          <label for="last_name">Telefone</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.text_field :address, class: "validate", placeholder: "Endereço" %>
+          <label for="email">Endereço</label>
+        </div>
+      </div>
+
+
+      <%= button_tag(type: "submit", class: "btn waves-effect waves-light") do %>
+        <i class="material-icons right">send</i> <%= btn_title %>
+      <% end %>
+
+      <%= link_to customers_path, class:"btn waves-effect waves-light red" do %>
+         VOLTAR<i class="large material-icons">arrow_back</i>
+      <% end %>
+
+    <% end %>
+  </div>
+
+
+
+

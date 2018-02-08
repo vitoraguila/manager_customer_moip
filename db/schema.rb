@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180201150116) do
+ActiveRecord::Schema.define(version: 20180203012748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20180201150116) do
     t.string   "status"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "link_boleto"
     t.index ["customer_id"], name: "index_orders_on_customer_id", using: :btree
     t.index ["service_id"], name: "index_orders_on_service_id", using: :btree
   end
@@ -44,7 +45,7 @@ ActiveRecord::Schema.define(version: 20180201150116) do
     t.string   "name"
     t.string   "detail"
     t.string   "price"
-    t.string   "recurrence"
+    t.integer  "recurrence"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

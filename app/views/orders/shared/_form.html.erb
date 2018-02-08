@@ -1,0 +1,49 @@
+  <% if @order.errors.any? %> 
+  <% @order.errors.full_messages.each do |message| %>
+    <script>Materialize.toast('<%= message %>', 4000, 'red')</script>
+  <% end %>
+<% end %>
+
+<div class="row">
+    <%= form_for(@order, html: { class: "col s12" }) do |f| %>
+       <div class="row">
+        <div class="col s12">
+          <%= f.collection_select(:service_id, Service.all, :id, :name, class: "input-field" ) %>
+          <label for="first_name">Serviço:</label>
+        </div>
+      </div>    
+       <div class="row">
+        <div class="col s12">
+          <%= f.collection_select(:customer_id, Customer.all, :id, :fullname, class: "input-field" ) %>
+          <label for="first_name">Cliente:</label>
+        </div>
+      </div>    
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.date_field :expiration_date, class: 'datepicker' %>
+          <label for="first_name">Data de vencimento:</label>
+        </div>
+      </div>    
+
+
+      <%= button_tag(type: "submit", class: "btn waves-effect waves-light") do %>
+        <i class="material-icons right">send</i> <%= btn_title %>
+      <% end %>
+
+      <%= link_to orders_path, class:"btn waves-effect waves-light red" do %>
+         VOLTAR<i class="large material-icons">arrow_back</i>
+      <% end %>
+
+    <% end %>
+  </div>
+
+<script>
+  $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year,
+    today: 'Today',
+    clear: 'Clear',
+    close: 'Ok',
+    closeOnSelect: false // Close upon selecting a date,
+  });
+</script>

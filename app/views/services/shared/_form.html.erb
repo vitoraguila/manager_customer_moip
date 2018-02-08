@@ -1,0 +1,48 @@
+ <% if @service.errors.any? %> 
+  <% @service.errors.full_messages.each do |message| %>
+    <script>Materialize.toast('<%= message %>', 4000, 'red')</script>
+  <% end %>
+<% end %>
+
+<div class="row">
+    <%= form_for(@service, html: { class: "col s12" }) do |f| %>
+       <div class="row">
+        <div class="input-field col s12">
+          <%= f.text_field :name, class: "validate", placeholder: "Nome" %>
+          <label for="first_name">Nome:</label>
+        </div>
+      </div>    
+      <div class="row">
+        <div class="input-field col s12">
+          <%= f.text_field :detail, class: "validate", placeholder: "Detalhes" %>
+          <label for="first_name">Detalhes:</label>
+        </div>
+      </div>    
+      <div class="row">
+        <div class="input-field col s6">
+          <%= f.text_field :price, class: "validate", placeholder: "Preço" %>        
+          <label for="first_name">Preço:</label>
+        </div>
+
+        <div class="col s6">
+          <label for="last_name">Recorrencia:</label>
+          <%= f.collection_select :recurrence, options_for_recurrence, :id, :description, { prompt: "Escolha a recorrencia" }, class: "input-field" %>  
+        </div>
+      </div>
+
+
+
+      <%= button_tag(type: "submit", class: "btn waves-effect waves-light") do %>
+        <i class="material-icons right">send</i> <%= btn_title %>
+      <% end %>
+
+      <%= link_to services_path, class:"btn waves-effect waves-light red" do %>
+         VOLTAR<i class="large material-icons">arrow_back</i>
+      <% end %>
+
+    <% end %>
+  </div>
+
+
+
+

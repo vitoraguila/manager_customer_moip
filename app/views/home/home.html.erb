@@ -1,2 +1,11 @@
-<h1>Home#home</h1>
-<p>Find me in app/views/home/home.html.erb</p>
+<div class="row home">
+  <div class="center">
+    <h4 class="title">Sistema de gestão de boletos com o MOIP </h4>
+    <h5 class="subtitle">Crie boletos de cobrança para seus clientes</h5>
+    <h5 class="subtitle2">Rápido, fácil e garantido</h5>
+
+    <%= form_tag("/orders", method: "post") do %>
+      <%= submit_tag("Entrar agora", class: "waves-effect cyan btn home-button") %>
+    <% end %>
+  </div>
+</div>

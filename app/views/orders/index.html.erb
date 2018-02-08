@@ -1,0 +1,76 @@
+<div class="row campaigns">
+  <h3>Pedidos</h3>
+  <br>
+ 
+  <table class="responsive-table">
+    <thead>
+      <tr>
+          <th>Moip ID</th>
+          <th>Cliente</th>
+          <th>Serviço</th>
+          <th>Data de vencimento</th>
+          <th>Valor</th>
+          <th>Status</th>
+          <th></th>
+          <th></th>
+          <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @orders.each do |c| %>
+      <tr>
+        <td><%= c.moipid %></td>
+        <td><%= c.customer.fullname %></td>
+        <td><%= c.service.name %></td>
+        <td><%= c.expiration_date  %></td>
+        <td><%= c.service.price %></td>
+        <%
+          if c.status == 'WAITING'
+            color = 'yellow lighten-1'
+          elsif c.status == 'PAID'
+            color = 'green darken-2'
+          else 
+            color = 'red darken-2'
+          end
+        %>
+        <td>
+          <span class="badge <%= color %>">
+            <%= c.status %>
+          </span>
+        </td>
+        <td>
+          <a href="<%= c.link_boleto %>" target="_blank" class="waves-effect waves-light btn cyan">
+            <i class="large material-icons">payment</i>
+          </a>
+        </td>        
+        <td>
+          <%= link_to edit_order_path(c.id), class:"waves-effect waves-light btn cyan" do %>
+            <i class="large material-icons">update</i>
+          <% end %>
+        </td>
+        <td>
+        <%= link_to order_path(c.id), method: :delete, class:"waves-effect waves-light btn red" do %>
+            <i class="large material-icons">delete</i>
+        <% end %>  
+      </tr>
+
+      <% end %>
+    </tbody>
+  </table>
+            
+
+
+
+  <div class="fixed-action-btn campaigns-btn">
+   <%= link_to new_order_path, class:"btn-floating btn-large red pulse" do %>
+    <i class="large material-icons">add</i>
+   <% end %>
+  </div>
+
+
+   <%= link_to refresh_path, class:"btn-floating btn-large waves-effect waves-light red" do %>
+    <i class="large material-icons">refresh</i>
+   <% end %>
+
+</div>

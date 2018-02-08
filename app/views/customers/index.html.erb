@@ -1,0 +1,45 @@
+<div class="row campaigns">
+  <h3>Clientes</h3>
+  <br>
+
+  <table class="responsive-table">
+    <thead>
+      <tr>
+          <th>Nome / Razao Social</th>
+          <th>Email</th>
+          <th>Telefone</th>
+          <th></th>
+          <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @customers.each do |c| %>
+      <tr>
+        <td><%= truncate(c.fullname, length: 30, omission: '...') %></td>
+        <td><%= c.email %></td>
+        <td><%= c.phone %></td>
+        <td>
+          <%= link_to edit_customer_path(c.id), class:"waves-effect waves-light btn cyan" do %>
+            <i class="large material-icons">update</i>
+          <% end %>
+        </td>
+        <td>
+        <%= link_to customer_path(c.id), method: :delete, class:"waves-effect waves-light btn red" do %>
+            <i class="large material-icons">delete</i>
+        <% end %>  
+      </tr>
+
+      <% end %>
+    </tbody>
+  </table>
+            
+
+
+
+  <div class="fixed-action-btn campaigns-btn">
+   <%= link_to new_customer_path, class:"btn-floating btn-large red pulse" do %>
+    <i class="large material-icons">add</i>
+   <% end %>
+  </div>
+</div>

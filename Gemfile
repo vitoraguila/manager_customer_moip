@@ -40,6 +40,9 @@ gem 'materialize-sass'
 gem 'material_icons'
 gem 'redis'
 gem 'sidekiq'
+gem 'enum_help'
+
+gem "moip2"
 
 group :test do
   gem "factory_bot_rails"
